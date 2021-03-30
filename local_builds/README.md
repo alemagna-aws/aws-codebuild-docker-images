@@ -7,16 +7,17 @@ CodeBuild. Now, you can simulate a CodeBuild environment locally to quickly trou
 commands and settings located in the BuildSpec file. The agent also allows you to build your application
 locally before committing your changes to build on the cloud.
 
-Start by pulling the signed local agent image from [DockerHub](https://hub.docker.com/r/amazon/aws-codebuild-local/):
+Start by pulling the signed local agent image for your architecture from [DockerHub](https://hub.docker.com/r/amazon/aws-codebuild-local/):
 
     docker pull amazon/aws-codebuild-local:latest --disable-content-trust=false
-
+    
+    docker pull amazon/aws-codebuild-local:aarch64 --disable-content-trust=false
 
 You can verify the SHA matches our [latest release](https://docs.aws.amazon.com/codebuild/latest/userguide/samples.html). Please allow at least an hour after a new version has been pushed for the updated SHA to be reflected in our documentation. 
 
 Download and use our codebuild_build.sh script to run your local builds.
 
-    usage: codebuild_build.sh [-i image_name] [-a artifact_output_directory] [options]
+    usage: codebuild_build.sh [-i image_name] [-a artifact_output_directory] [-l local agent image name] [options]
 
 **Required:**  
   -i        Used to specify the customer build container image.  
